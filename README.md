@@ -6,4 +6,4 @@ possible, which means that each solution represent the very first idea that
 came to my mind when I read the problem description. 
 They could obviously be improved in a number of ways.
 
-http://http://adventofcode.com/2017
+http://adventofcode.com/2017
