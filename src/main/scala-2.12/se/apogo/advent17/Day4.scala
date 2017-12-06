@@ -34,3 +34,17 @@ object Day4_2 extends App {
 }
 
 
+/**
+  * This would have been a much better solution to part 2 (only a small change,
+  * compared to part 1), but I didn't think of it when I faced the problem. :)
+  */
+object Day4_2b extends App {
+  val input: Seq[String] = Source.fromResource("se/apogo/advent17/input04.txt").getLines.toIndexedSeq
+
+  val result: Int = input.count(line => {
+    val split: Array[String] = line.split("\\s").map(_.trim)
+    split.map(_.sorted).toSet.size == split.length
+  })
+
+  println(result)
+}
