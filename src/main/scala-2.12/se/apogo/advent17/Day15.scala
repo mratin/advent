@@ -2,13 +2,12 @@ package se.apogo.advent17
 
 object Day15_1 extends App {
   case class Gen(factor: Long, number: Long) {
-    def next: Gen = copy(number = (number * factor) % 2147483647)
-    def bits: String = number.toBinaryString.takeRight(16)
+    def next: Gen = copy(number = number * factor % 2147483647)
   }
 
   def run(a: Gen, b: Gen, count: Int, times: Int): Int = {
     if (times == 0) count else {
-      val newCount = if (a.bits == b.bits) count+1 else count
+      val newCount = if ((a.number.toInt & 0xFFFF) == (b.number.toInt & 0xFFFF)) count+1 else count
       run(a.next, b.next, newCount, times - 1)
     }
   }
@@ -29,12 +28,11 @@ object Day15_2 extends App {
         nextGen.next
       }
     }
-    def bits: String = number.toBinaryString.takeRight(16)
   }
 
   def run(a: Gen, b: Gen, count: Int, times: Int): Int = {
     if (times == 0) count else {
-      val newCount = if (a.bits == b.bits) count+1 else count
+      val newCount = if ((a.number.toInt & 0xFFFF) == (b.number.toInt & 0xFFFF)) count+1 else count
       run(a.next, b.next, newCount, times - 1)
     }
   }
