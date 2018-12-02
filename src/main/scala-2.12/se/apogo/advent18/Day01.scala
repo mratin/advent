@@ -8,7 +8,7 @@ object Day01 extends App {
   println(changes.sum)
 }
 
-object Day02 extends App {
+object Day01_2 extends App {
   val changes: Seq[Int] = Source.fromResource("se/apogo/advent18/input01.txt").getLines.map(_.trim).map(Integer.parseInt).toSeq
 
   def freqs(cs: Seq[Int], f: Int, seen: Set[Int]): Int = {
