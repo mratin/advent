@@ -33,3 +33,21 @@ object Day02_2 extends App {
 
   println(result.head)
 }
+
+
+/**
+  * More streamlined solution to part 2
+  */
+object Day02_2b extends App {
+  val changes: Seq[String] = Source.fromResource("se/apogo/advent18/input02.txt").getLines.map(_.trim).toSeq
+
+  val result =
+    for {
+      i <- 0 to changes.size - 2
+      j <- i + 1 until changes.size
+      letters = changes(i).zip(changes(j)).filter(p => p._1 == p._2).map(_._1).mkString
+      if letters.length == changes(i).length - 1
+    } yield letters
+
+  println(result.head)
+}
