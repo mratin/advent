@@ -32,10 +32,9 @@ object Day06 extends App {
   def area(coord: Pos): Set[Pos] = allPositions.filter(p => positionNearestCoord(p).contains(coord)).toSet
   def isFinite(area: Set[Pos]) = area.forall(p => minX < p.x && p.x < maxX && minY < p.y && p.y < maxY)
 
-  val areaMap: Map[Pos, Set[Pos]] = coords.map(p => p -> area(p)).toMap
-  val largestFinite = areaMap.values.filter(isFinite).maxBy(_.size)
+  val largestFinite = coords.map(area).filter(isFinite).map(_.size).max
 
-  println(largestFinite.size)
+  println(largestFinite)
 }
 
 object Day06_2 extends App {
